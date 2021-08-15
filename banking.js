@@ -17,6 +17,7 @@ depositBtn.addEventListener('click', ()=>{
         let total = parseInt( totalBalance.innerText )+ parseInt(depositInput.value) ;
        
            totalBalance.innerText = total;
+           depositInput.value = ' ';
     }
     else{
         
@@ -38,6 +39,7 @@ withdrawBtn.addEventListener('click', ()=>{
         let total = parseInt( totalBalance.innerText ) - parseInt(withdrawInput.value) ;
        
            totalBalance.innerText = total;
+           withdrawInput.value = ' ';
     }
     else{
         
