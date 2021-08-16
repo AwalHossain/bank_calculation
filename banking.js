@@ -8,22 +8,40 @@ let totalBalance = document.getElementById('totalBalance')
 
 
 // Bank JS 
-
-depositBtn.addEventListener('click', ()=>{
- 
-    if(typeof  (parseInt(depositInput.value)) === 'number' &&  (parseInt(depositInput.value))> 0 ){
+// Function 
+function calculation(number, numberInput, isAdd){
+    if(typeof  (parseInt(numberInput.value)) === 'number' &&  (parseInt(numberInput.value))> 0 ){
    
-        deposit.innerText = parseInt( deposit.innerText )+ parseInt(depositInput.value);
-        let total = parseInt( totalBalance.innerText )+ parseInt(depositInput.value) ;
+        number.innerText = parseInt( number.innerText ) + parseInt(numberInput.value);
+        if(isAdd == true){
+            let total =parseInt(totalBalance.innerText) +
+            parseInt( numberInput.value) ;
+            totalBalance.innerText = total;
+        }
+        else{
+            let total =parseInt(totalBalance.innerText) -
+            parseInt( numberInput.value) ;
+            totalBalance.innerText = total;
+        }
+
        
-           totalBalance.innerText = total;
-           depositInput.value = ' ';
+ 
+           numberInput.value = ' ';
     }
     else{
         
         alert("invalid value")
     }
+}
 
+// let sign = parseInt( "+");
+// let add = `parseInt(2) ${sign} parseInt(3)`;
+// console.log(add)
+
+// EventListener 
+depositBtn.addEventListener('click', ()=>{
+
+calculation(deposit, depositInput, true)
 
 
 })
@@ -33,18 +51,7 @@ depositBtn.addEventListener('click', ()=>{
 
 withdrawBtn.addEventListener('click', ()=>{
  
-    if(typeof  (parseInt(withdrawInput.value)) === 'number' &&  (parseInt(withdrawInput.value))> 0 ){
-   
-        withdraw.innerText = parseInt( withdraw.innerText ) + parseInt(withdrawInput.value);
-        let total = parseInt( totalBalance.innerText ) - parseInt(withdrawInput.value) ;
-       
-           totalBalance.innerText = total;
-           withdrawInput.value = ' ';
-    }
-    else{
-        
-        alert("invalid value")
-    }
+calculation(withdraw, withdrawInput, false);
 
 
 
