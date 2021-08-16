@@ -4,7 +4,8 @@ const deposit = document.getElementById('deposit');
 const witdraw = document.getElementById('withdraw')
 const depositBtn = document.getElementById('deposit-btn');
 const withdrawBtn = document.getElementById('withdraw-btn');
-let totalBalance = document.getElementById('totalBalance')
+let Balance = document.getElementById('totalBalance')
+let totalBalance = parseInt(Balance.innerText);
 
 
 // Bank JS 
@@ -12,16 +13,30 @@ let totalBalance = document.getElementById('totalBalance')
 function calculation(number, numberInput, isAdd){
     if(typeof  (parseInt(numberInput.value)) === 'number' &&  (parseInt(numberInput.value))> 0 ){
    
-        number.innerText = parseInt( number.innerText ) + parseInt(numberInput.value);
+        let total;
         if(isAdd == true){
-            let total =parseInt(totalBalance.innerText) +
+           
+            number.innerText = parseInt( number.innerText ) + parseInt(numberInput.value);
+       total = parseInt(Balance.innerText) +
             parseInt( numberInput.value) ;
-            totalBalance.innerText = total;
+            Balance.innerText = total;
+            
         }
         else{
-            let total =parseInt(totalBalance.innerText) -
-            parseInt( numberInput.value) ;
-            totalBalance.innerText = total;
+      
+            console.log(Balance.innerText);
+            if( Balance.innerText < parseInt(numberInput.value) ){
+                alert("sorry, you cannot withdrawn money that you don't have")
+            }
+            else{
+                number.innerText = parseInt( number.innerText ) + parseInt(numberInput.value);
+                total = parseInt(Balance.innerText) -
+                         parseInt( numberInput.value) ;
+                         Balance.innerText = total;
+                         // if( )
+                         console.log(total);
+            }
+
         }
 
        
